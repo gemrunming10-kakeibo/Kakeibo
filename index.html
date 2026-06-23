@@ -220,63 +220,68 @@
 
 <section class="relative z-10 pb-6">
 
-    <!-- CAROUSEL WRAPPER (NO SCROLL SNAP LAGI) -->
-    <div class="overflow-hidden">
+    <!-- viewport -->
+    <div class="overflow-hidden w-full">
 
-        <div id="chartTrack" class="flex transition-transform duration-300">
+        <!-- track -->
+        <div id="chartTrack" class="flex w-full transition-transform duration-300">
 
-            <!-- CHART 1 -->
-            <div class="min-w-full flex-shrink-0 space-y-1.5">
+            <!-- SLIDE 1 -->
+            <div class="w-full flex-none space-y-1.5">
                 <div class="text-center">
-                    <span class="text-xs font-medium text-gray-400 bg-gray-800/50 px-4 py-0.5 rounded-full border border-gray-700/20">
-                        グラフ : 支出内訳 (Alokasi Pengeluaran)
+                    <span class="text-xs text-gray-400 bg-gray-800/50 px-4 py-0.5 rounded-full border border-gray-700/20">
+                        グラフ : 支出内訳
                     </span>
                 </div>
-                <div class="w-full bg-[#1b202c] rounded-2xl p-3 border border-gray-800 min-h-[140px]">
-                    <div id="expenseChart" class="w-full"></div>
+
+                <div class="bg-[#1b202c] rounded-2xl p-3 min-h-[140px]">
+                    <div id="expenseChart"></div>
                 </div>
             </div>
 
-            <!-- CHART 2 -->
-            <div class="min-w-full flex-shrink-0 space-y-1.5">
+            <!-- SLIDE 2 -->
+            <div class="w-full flex-none space-y-1.5">
                 <div class="text-center">
-                    <span class="text-xs font-medium text-gray-400 bg-gray-800/50 px-4 py-0.5 rounded-full border border-gray-700/20">
-                        グラフ : 収支比較 (Income vs Expense)
+                    <span class="text-xs text-gray-400 bg-gray-800/50 px-4 py-0.5 rounded-full border border-gray-700/20">
+                        収支比較
                     </span>
                 </div>
-                <div class="w-full bg-[#1b202c] rounded-2xl p-3 border border-gray-800 min-h-[160px]">
-                    <div id="comparisonChart" class="w-full"></div>
+
+                <div class="bg-[#1b202c] rounded-2xl p-3 min-h-[160px]">
+                    <div id="comparisonChart"></div>
                 </div>
             </div>
 
-            <!-- CHART 3 -->
-            <div class="min-w-full flex-shrink-0 space-y-1.5">
+            <!-- SLIDE 3 -->
+            <div class="w-full flex-none space-y-1.5">
                 <div class="text-center">
-                    <span class="text-xs font-medium text-gray-400 bg-gray-800/50 px-4 py-0.5 rounded-full border border-gray-700/20">
-                        グラフ : 貯蓄構成
+                    <span class="text-xs text-gray-400 bg-gray-800/50 px-4 py-0.5 rounded-full border border-gray-700/20">
+                        貯蓄構成
                     </span>
                 </div>
-                <div class="w-full bg-[#1b202c] rounded-2xl p-3 border border-gray-800 min-h-[140px]">
-                    <div id="savingsChart" class="w-full"></div>
+
+                <div class="bg-[#1b202c] rounded-2xl p-3 min-h-[140px]">
+                    <div id="savingsChart"></div>
                 </div>
             </div>
 
-            <!-- CHART 4 -->
-            <div class="min-w-full flex-shrink-0 space-y-1.5">
+            <!-- SLIDE 4 -->
+            <div class="w-full flex-none space-y-1.5">
                 <div class="text-center">
-                    <span class="text-xs font-medium text-gray-400 bg-gray-800/50 px-4 py-0.5 rounded-full border border-gray-700/20">
+                    <span class="text-xs text-gray-400 bg-gray-800/50 px-4 py-0.5 rounded-full border border-gray-700/20">
                         Income vs Hutang
                     </span>
                 </div>
-                <div class="w-full bg-[#1b202c] rounded-2xl p-3 border border-gray-800 min-h-[160px]">
-                    <div id="incomeDebtChart" class="w-full"></div>
+
+                <div class="bg-[#1b202c] rounded-2xl p-3 min-h-[160px]">
+                    <div id="incomeDebtChart"></div>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- DOT NAVIGATION -->
+    <!-- dots -->
     <div class="flex justify-center gap-2 mt-3">
         <button class="chart-dot w-2 h-2 rounded-full bg-gray-500"></button>
         <button class="chart-dot w-2 h-2 rounded-full bg-gray-500"></button>
