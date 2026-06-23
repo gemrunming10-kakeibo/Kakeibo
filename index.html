@@ -236,6 +236,17 @@
                     <div id="savingsChart" class="w-full"></div>
                 </div>
             </div>
+            <div class="space-y-1.5">
+    <div class="text-center">
+        <span class="text-xs font-medium text-gray-400 bg-gray-800/50 px-4 py-0.5 rounded-full border border-gray-700/20">
+            Income vs Hutang
+        </span>
+    </div>
+
+    <div class="w-full bg-[#1b202c] rounded-2xl p-3 border border-gray-800 flex justify-center items-center shadow-inner min-h-[160px]">
+        <div id="incomeDebtChart" class="w-full"></div>
+    </div>
+</div>
         </section>
 <section class="flex flex-col space-y-4 pt-1 relative z-10 h-[350px] flex-shrink-0">
 
@@ -335,6 +346,72 @@ responsive: [
   }
 ]
             new ApexCharts(document.querySelector("#savingsChart"), savingsOptions).render();
+
+var incomeDebtOptions = {
+    series: [
+        {
+            name: 'Income',
+            data: [15000000]
+        },
+        {
+            name: 'Hutang',
+            data: [4950000]
+        }
+    ],
+    chart: {
+        type: 'bar',
+        height: 180,
+        toolbar: { show: false },
+        foreColor: '#9ca3af'
+    },
+    plotOptions: {
+        bar: {
+            horizontal: false,
+            columnWidth: '40%',
+            borderRadius: 6
+        }
+    },
+    colors: ['#34d399', '#f43f5e'],
+    dataLabels: { enabled: false },
+    xaxis: {
+        categories: ['Finance'],
+        labels: { style: { fontSize: '10px' } }
+    },
+    yaxis: {
+        labels: { style: { fontSize: '9px' } }
+    },
+    grid: {
+        borderColor: '#2d3748',
+        strokeDashArray: 4
+    },
+    legend: {
+        position: 'top',
+        fontSize: '10px'
+    },
+    tooltip: {
+        theme: 'dark'
+    },
+
+    // 👇 penting untuk HP
+    responsive: [
+        {
+            breakpoint: 480,
+            options: {
+                chart: {
+                    height: 200
+                },
+                plotOptions: {
+                    bar: {
+                        columnWidth: '60%'
+                    }
+                }
+            }
+        }
+    ]
+};
+
+new ApexCharts(document.querySelector("#incomeDebtChart"), incomeDebtOptions).render();
+            
         });
         const headers = document.querySelectorAll('.accordion-header');
 
