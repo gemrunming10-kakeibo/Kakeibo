@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>かけいぼ - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .secure-value { transition: all 0.2s ease-in-out; }
+        .secure-value.value-hidden .amount-real { display: none; }
+        .secure-value:not(.value-hidden) .amount-masked { display: none; }
+        
+        /* Modifikasi Scrollbar halus untuk webkit */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #2d3748; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-[#0f1115] text-[#e2e8f0] flex justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-md bg-[#161a22] rounded-[2.5rem] shadow-2xl border border-gray-800/60 p-5 flex flex-col space-y-5 relative h-[840px] overflow-y-auto scrollbar-thin">
+        
+        <div class="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+        <header class="text-center pt-2 relative z-10 flex-shrink-0">
+            <div class="inline-block bg-gray-800/40 backdrop-blur-md px-8 py-2.5 rounded-2xl border border-gray-700/30">
+                <h1 class="text-2xl font-bold tracking-widest text-[#f3c677]">かけいぼ</h1>
+                <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-0.5">Personal Finance Hub</p>
+            </div>
+        </header>
+
+        <section class="space-y-1.5 relative z-10 flex-shrink-0">
+            <div class="text-center">
+                <span class="text-xs font-medium text-gray-400 bg-gray-800/50 px-3 py-0.5 rounded-full border border-gray-700/20">おこづかい</span>
+            </div>
+            <div class="bg-[#1f2532] rounded-xl border border-gray-700/40 shadow-inner grid grid-cols-3 divide-x divide-gray-800 overflow-hidden cursor-pointer secure-toggle-group">
+                <div class="p-3 min-w-0 secure-value value-hidden">
+                    <p class="text-[9px] text-gray-500 font-bold mb-0.5">Rp</p>
+                    <p class="text-sm font-semibold text-emerald-400 truncate amount-real">4.500.000</p>
+                    <p class="text-sm font-semibold text-gray-600 amount-masked">***</p>
+                </div>
+                <div class="p-3 min-w-0 secure-value value-hidden">
+                    <p class="text-[9px] text-gray-500 font-bold mb-0.5">¥</p>
+                    <p class="text-sm font-semibold text-gray-200 truncate amount-real">41.250</p>
+                    <p class="text-sm font-semibold text-gray-600 amount-masked">***</p>
+                </div>
+                <div class="p-3 min-w-0 secure-value value-hidden">
+                    <p class="text-[9px] text-gray-500 font-bold mb-0.5">$</p>
+                    <p class="text-sm font-semibold text-gray-200 truncate amount-real">281</p>
+                    <p class="text-sm font-semibold text-gray-600 amount-masked">***</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-2 gap-3 relative z-10 flex-shrink-0">
+            <div class="space-y-1.5">
+                <div class="text-center"><span class="text-[11px] text-gray-400">しゅうにゅう</span></div>
+                <div class="bg-[#1f2532] rounded-xl border border-gray-700/40 divide-y divide-gray-800/60 overflow-hidden cursor-pointer secure-toggle-group">
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">Rp</span><span class="text-[11px] font-semibold text-emerald-400 truncate amount-real">15.000.000</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">¥</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">137.500</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">$</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">937</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                </div>
+            </div>
+            <div class="space-y-1.5">
+                <div class="text-center"><span class="text-[11px] text-gray-400">ししゅつ</span></div>
+                <div class="bg-[#1f2532] rounded-xl border border-gray-700/40 divide-y divide-gray-800/60 overflow-hidden cursor-pointer secure-toggle-group">
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">Rp</span><span class="text-[11px] font-semibold text-rose-400 truncate amount-real">7.500.000</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">¥</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">68.750</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">$</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">468</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <div class="text-center pt-1 relative z-10 flex-shrink-0">
+            <span class="text-xs font-bold tracking-wider text-[#f3c677] bg-[#f3c677]/10 px-4 py-1 rounded-full border border-[#f3c677]/20">
+                <i class="fa-solid fa-vault mr-1.5 text-[10px]"></i>ちょちく
+            </span>
+        </div>
+
+        <section class="grid grid-cols-2 gap-3 relative z-10 flex-shrink-0">
+            <div class="space-y-1.5">
+                <div class="text-center"><span class="text-[11px] text-gray-400">りゅうどう</span></div>
+                <div class="bg-[#1f2532] rounded-xl border border-gray-700/40 divide-y divide-gray-800/60 overflow-hidden cursor-pointer secure-toggle-group">
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">Rp</span><span class="text-[11px] font-semibold text-gray-200 truncate amount-real">10.000.000</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">¥</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">91.600</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">$</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">625</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                </div>
+            </div>
+            <div class="space-y-1.5">
+                <div class="text-center"><span class="text-[11px] text-gray-400">ひりゅうどう</span></div>
+                <div class="bg-[#1f2532] rounded-xl border border-gray-700/40 divide-y divide-gray-800/60 overflow-hidden cursor-pointer secure-toggle-group">
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">Rp</span><span class="text-[11px] font-semibold text-gray-200 truncate amount-real">35.000.000</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">¥</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">320.800</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">$</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">2.187</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- KOTAK HUTANG (BARU - DI ANTARA MEISAI & CHOOHIKU) -->
+        <div class="text-center pt-1 relative z-10 flex-shrink-0">
+            <span class="text-xs font-bold tracking-wider text-rose-400 bg-rose-400/10 px-4 py-1 rounded-full border border-rose-400/20">
+                <i class="fa-solid fa-hand-holding-dollar mr-1.5 text-[10px]"></i>借金 (Hutang)
+            </span>
+        </div>
+
+        <section class="grid grid-cols-2 gap-3 relative z-10 flex-shrink-0">
+            <!-- Tempat 1 -->
+            <div class="space-y-1.5">
+                <div class="text-center"><span class="text-[11px] text-gray-400">Kartu Kredit</span></div>
+                <div class="bg-[#1f2532] rounded-xl border border-gray-700/40 divide-y divide-gray-800/60 overflow-hidden cursor-pointer secure-toggle-group">
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">Rp</span><span class="text-[11px] font-semibold text-rose-400 truncate amount-real">2.500.000</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">¥</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">22.900</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">$</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">156</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                </div>
+            </div>
+            
+            <!-- Tempat 2 -->
+            <div class="space-y-1.5">
+                <div class="text-center"><span class="text-[11px] text-gray-400">Paylater</span></div>
+                <div class="bg-[#1f2532] rounded-xl border border-gray-700/40 divide-y divide-gray-800/60 overflow-hidden cursor-pointer secure-toggle-group">
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">Rp</span><span class="text-[11px] font-semibold text-rose-400 truncate amount-real">750.000</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">¥</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">6.800</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">$</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">46</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                </div>
+            </div>
+
+            <!-- Tempat 3 -->
+            <div class="space-y-1.5">
+                <div class="text-center"><span class="text-[11px] text-gray-400">Teman (Andi)</span></div>
+                <div class="bg-[#1f2532] rounded-xl border border-gray-700/40 divide-y divide-gray-800/60 overflow-hidden cursor-pointer secure-toggle-group">
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">Rp</span><span class="text-[11px] font-semibold text-rose-400 truncate amount-real">500.000</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">¥</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">4.500</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">$</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">31</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                </div>
+            </div>
+
+            <!-- Tempat 4 -->
+            <div class="space-y-1.5">
+                <div class="text-center"><span class="text-[11px] text-gray-400">Cicilan Barang</span></div>
+                <div class="bg-[#1f2532] rounded-xl border border-gray-700/40 divide-y divide-gray-800/60 overflow-hidden cursor-pointer secure-toggle-group">
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">Rp</span><span class="text-[11px] font-semibold text-rose-400 truncate amount-real">1.200.000</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">¥</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">11.000</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                    <div class="flex justify-between items-center p-2 min-w-0 gap-1 secure-value value-hidden"><span class="text-[9px] text-gray-500 font-bold">$</span><span class="text-[11px] font-semibold text-gray-400 truncate amount-real">75</span><span class="text-[11px] font-semibold text-gray-600 amount-masked">***</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="flex flex-col space-y-1.5 pt-1 relative z-10 h-[140px] flex-shrink-0">
+            <div class="text-center">
+                <span class="text-xs font-medium text-gray-400 bg-gray-800/50 px-4 py-0.5 rounded-full border border-gray-700/20">めいさい</span>
+            </div>
+            <div class="w-full flex-1 overflow-y-auto rounded-2xl border border-gray-800 bg-[#0b0d11] shadow-inner">
+                <table class="w-full text-left border-collapse text-[11px] table-fixed">
+                    <thead class="bg-[#181d26] text-gray-400 sticky top-0 font-medium border-b border-gray-800">
+                        <tr>
+                            <th class="p-2.5 w-1/4">Tanggal</th>
+                            <th class="p-2.5 w-2/5">Kategori</th>
+                            <th class="p-2.5 text-right w-7/20">Nominal</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-900/60 text-gray-300">
+                        <tr class="hover:bg-gray-800/20"><td class="p-2.5 text-gray-500 truncate">21/06</td><td class="p-2.5 truncate">Makanan</td><td class="p-2.5 text-right text-rose-400 truncate">-50.000</td></tr>
+                        <tr class="hover:bg-gray-800/20"><td class="p-2.5 text-gray-500 truncate">20/06</td><td class="p-2.5 truncate">Gaji Bulanan</td><td class="p-2.5 text-right text-emerald-400">+15.000.000</td></tr>
+                        <tr class="hover:bg-gray-800/20"><td class="p-2.5 text-gray-500 truncate">19/06</td><td class="p-2.5 truncate">Invest Emas</td><td class="p-2.5 text-right text-yellow-500 truncate">-500.000</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+        <section class="flex flex-col space-y-4 pt-1 relative z-10 pb-6">
+            <div class="space-y-1.5">
+                <div class="text-center"><span class="text-xs font-medium text-gray-400 bg-gray-800/50 px-4 py-0.5 rounded-full border border-gray-700/20">グラフ : 支出内訳 (Alokasi Pengeluaran)</span></div>
+                <div class="w-full bg-[#1b202c] rounded-2xl p-3 border border-gray-800 flex justify-center items-center shadow-inner min-h-[140px]">
+                    <div id="expenseChart" class="w-full"></div>
+                </div>
+            </div>
+
+            <div class="space-y-1.5">
+                <div class="text-center"><span class="text-xs font-medium text-gray-400 bg-gray-800/50 px-4 py-0.5 rounded-full border border-gray-700/20">グラフ : 収支比較 (Perbandingan Income & Expense)</span></div>
+                <div class="w-full bg-[#1b202c] rounded-2xl p-3 border border-gray-800 flex justify-center items-center shadow-inner min-h-[160px]">
+                    <div id="comparisonChart" class="w-full"></div>
+                </div>
+            </div>
+
+            <div class="space-y-1.5">
+                <div class="text-center"><span class="text-xs font-medium text-gray-400 bg-gray-800/50 px-4 py-0.5 rounded-full border border-gray-700/20">グラフ : 貯蓄構成 (Rasio Liquid & Non-Liquid)</span></div>
+                <div class="w-full bg-[#1b202c] rounded-2xl p-3 border border-gray-800 flex justify-center items-center shadow-inner min-h-[140px]">
+                    <div id="savingsChart" class="w-full"></div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Logika Klik Sembunyikan Nominal
+            const toggleGroups = document.querySelectorAll('.secure-toggle-group');
+            toggleGroups.forEach(group => {
+                group.addEventListener('click', function() {
+                    const secureValues = this.querySelectorAll('.secure-value');
+                    secureValues.forEach(value => { value.classList.toggle('value-hidden'); });
+                });
+            });
+
+            // Grafik 1: Donut Chart (Expense Breakdown)
+            var donutOptions = {
+                series: [45, 25, 20, 10],
+                chart: { type: 'donut', height: 130, foreColor: '#9ca3af' },
+                labels: ['Makanan', 'Tagihan', 'Transport', 'Lainnya'],
+                colors: ['#f43f5e', '#fbbf24', '#3b82f6', '#a855f7'],
+                stroke: { show: false },
+                dataLabels: { enabled: false },
+                legend: { position: 'right', fontSize: '10px', fontFamily: 'Plus Jakarta Sans', markers: { radius: 4 } },
+                plotOptions: { pie: { donut: { size: '70%', labels: { show: true, value: { fontSize: '12px', fontFamily: 'Plus Jakarta Sans', fontWeight: 'bold', color: '#e2e8f0', formatter: function(val) { return val + "%" } } } } } }
+            };
+            new ApexCharts(document.querySelector("#expenseChart"), donutOptions).render();
+
+            // Grafik 2: Grouped Bar Chart (Income vs Expense)
+            var barOptions = {
+                series: [
+                    { name: 'Income', data: [5.0, 4.2, 3.8, 2.0] },
+                    { name: 'Expense', data: [2.1, 1.8, 2.4, 1.2] }
+                ],
+                chart: { type: 'bar', height: 150, toolbar: { show: false }, foreColor: '#9ca3af' },
+                plotOptions: { bar: { horizontal: false, columnWidth: '55%', borderRadius: 4 } },
+                colors: ['#34d399', '#f43f5e'],
+                dataLabels: { enabled: false },
+                stroke: { show: true, width: 2, colors: ['transparent'] },
+                xaxis: {
+                    categories: ['W1', 'W2', 'W3', 'W4'],
+                    labels: { style: { fontSize: '9px', fontFamily: 'Plus Jakarta Sans' } }
+                },
+                yaxis: { labels: { style: { fontSize: '9px', fontFamily: 'Plus Jakarta Sans' } } },
+                grid: { borderColor: '#2d3748', strokeDashArray: 4 },
+                legend: { position: 'top', fontSize: '10px', fontFamily: 'Plus Jakarta Sans', markers: { radius: 4 } },
+                tooltip: { theme: 'dark' }
+            };
+            new ApexCharts(document.querySelector("#comparisonChart"), barOptions).render();
+
+            // Grafik 3: Donut Chart (Savings - Liquid vs Non-Liquid)
+            var savingsOptions = {
+                series: [22.2, 77.8], // Rasio simulasi berdasarkan data nominal di atas (10jt vs 35jt)
+                chart: { type: 'donut', height: 130, foreColor: '#9ca3af' },
+                labels: ['りゅうどう (Liquid)', 'ひりゅうどう (Non-Liq)'],
+                colors: ['#60a5fa', '#f59e0b'], // Light Blue untuk Liquid, Amber untuk Non-Liquid
+                stroke: { show: false },
+                dataLabels: { enabled: false },
+                legend: { position: 'right', fontSize: '10px', fontFamily: 'Plus Jakarta Sans', markers: { radius: 4 } },
+                plotOptions: { pie: { donut: { size: '70%', labels: { show: true, value: { fontSize: '12px', fontFamily: 'Plus Jakarta Sans', fontWeight: 'bold', color: '#e2e8f0', formatter: function(val) { return val + "%" } } } } } }
+            };
+            new ApexCharts(document.querySelector("#savingsChart"), savingsOptions).render();
+        });
+    </script>
+
+</body>
+</html>
