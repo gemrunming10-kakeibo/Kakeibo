@@ -313,6 +313,52 @@
                     </tbody>
                 </table>
             </div>
+<!-- Form Input Transaksi -->
+<div class="mt-3 bg-[#181d26] border border-gray-800 rounded-2xl p-3 space-y-3">
+
+    <div class="grid grid-cols-3 gap-2">
+
+        <!-- Tanggal -->
+        <div>
+            <label class="block text-[10px] text-gray-500 mb-1">
+                Tanggal
+            </label>
+            <input
+                type="date"
+                class="w-full bg-[#0f1115] border border-gray-700 rounded-lg px-2 py-2 text-[11px] text-gray-200 focus:outline-none focus:border-sky-500">
+        </div>
+
+        <!-- Kategori -->
+        <div>
+            <label class="block text-[10px] text-gray-500 mb-1">
+                Kategori
+            </label>
+            <input
+                type="text"
+                placeholder="Kategori"
+                class="w-full bg-[#0f1115] border border-gray-700 rounded-lg px-2 py-2 text-[11px] text-gray-200 placeholder-gray-600 focus:outline-none focus:border-sky-500">
+        </div>
+
+        <!-- Nominal -->
+        <div>
+            <label class="block text-[10px] text-gray-500 mb-1">
+                Nominal
+            </label>
+            <input
+                type="number"
+                placeholder="0"
+                class="w-full bg-[#0f1115] border border-gray-700 rounded-lg px-2 py-2 text-[11px] text-right text-gray-200 placeholder-gray-600 focus:outline-none focus:border-sky-500">
+        </div>
+
+    </div>
+
+    <button
+        class="w-full bg-sky-500 hover:bg-sky-600 transition rounded-xl py-2 text-[12px] font-semibold text-white">
+        <i class="fa-solid fa-plus mr-2"></i>
+        Tambah Transaksi
+    </button>
+
+</div>
         </section>
 
     </div>
