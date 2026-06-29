@@ -66,12 +66,19 @@
     <div class="accordion-content active">
         <section class="space-y-1.5 relative z-10 flex-shrink-0">
 
-            <div class="bg-[#1f2532] rounded-xl border border-gray-700/40 shadow-inner grid grid-cols-3 divide-x divide-gray-800 overflow-hidden cursor-pointer secure-toggle-group">
-                <div class="p-3 min-w-0 secure-value value-hidden">
-                    <p class="text-[9px] text-gray-500 font-bold mb-0.5">Rp</p>
-                    <p class="text-sm font-semibold text-emerald-400 truncate amount-real">4.500.000</p>
-                    <p class="text-sm font-semibold text-gray-600 amount-masked">***</p>
-                </div>
+<div class="p-3 secure-value value-hidden flex flex-col justify-center">
+    <span class="text-[9px] text-gray-500 font-bold">
+        Rp
+    </span>
+
+    <span class="mt-1 text-[15px] leading-tight font-semibold text-emerald-400 break-all amount-real">
+        4.500.000
+    </span>
+
+    <span class="mt-1 text-[15px] leading-tight font-semibold text-gray-600 amount-masked">
+        ***
+    </span>
+</div>
                 <div class="p-3 min-w-0 secure-value value-hidden">
                     <p class="text-[9px] text-gray-500 font-bold mb-0.5">¥</p>
                     <p class="text-sm font-semibold text-gray-200 truncate amount-real">41.250</p>
