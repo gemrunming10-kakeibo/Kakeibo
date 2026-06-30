@@ -593,24 +593,16 @@ track.addEventListener("touchend", e => {
 
 // init
 goToChart(0);
-        async function tambahTransaksi() {
+async function tambahTransaksi() {
 
     const tanggal = document.getElementById("tanggal").value;
     const kategori = document.getElementById("kategori").value;
     const nominal = document.getElementById("nominal").value;
 
-    if (!tanggal || !kategori || !nominal) {
-        alert("Lengkapi semua data.");
-        return;
-    }
-
     try {
 
         const response = await fetch(API_URL, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
             body: JSON.stringify({
                 tanggal,
                 kategori,
@@ -618,26 +610,13 @@ goToChart(0);
             })
         });
 
-        const result = await response.json();
+        const text = await response.text();
 
-        if (result.success) {
+        console.log(text);
 
-            document.getElementById("tanggal").value = "";
-            document.getElementById("kategori").value = "";
-            document.getElementById("nominal").value = "";
-
-            loadTransaksi();
-
-        } else {
-
-            alert("Gagal menyimpan data.");
-
-        }
-
-    } catch (err) {
+    } catch(err){
 
         console.error(err);
-        alert("Tidak dapat terhubung ke server.");
 
     }
 
