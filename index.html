@@ -389,6 +389,7 @@
     </div>
 
     <script>
+        const API_URL = "https://script.google.com/macros/s/AKfycbwnoyYxOQTrNqyMI7fFIA02Hzw_QISamenPUA57X5yWNONxDFrFz3c_r7LCsdGpFCjgSw/exec";
         document.addEventListener('DOMContentLoaded', function() {
             // Logika Klik Sembunyikan Nominal
             const toggleGroups = document.querySelectorAll('.secure-toggle-group');
@@ -591,6 +592,88 @@ track.addEventListener("touchend", e => {
 
 // init
 goToChart(0);
+        async function tambahTransaksi() {
+
+    const tanggal = document.getElementById("tanggal").value;
+    const kategori = document.getElementById("kategori").value;
+    const nominal = document.getElementById("nominal").value;
+
+    if (!tanggal || !kategori || !nominal) {
+        alert("Lengkapi semua data.");
+        return;
+    }
+
+    try {
+
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                tanggal,
+                kategori,
+                nominal
+            })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+
+            document.getElementById("tanggal").value = "";
+            document.getElementById("kategori").value = "";
+            document.getElementById("nominal").value = "";
+
+            loadTransaksi();
+
+        } else {
+
+            alert("Gagal menyimpan data.");
+
+        }
+
+    } catch (err) {
+
+        console.error(err);
+        alert("Tidak dapat terhubung ke server.");
+
+    }
+
+}
+        async function loadTransaksi() {
+
+    try {
+
+        const response = await fetch(API_URL);
+
+        const data = await response.json();
+
+        let html = "";
+
+        data.forEach(item => {
+
+            html += `
+            <tr class="hover:bg-gray-800/20">
+                <td class="p-2.5 text-gray-500">${item[0]}</td>
+                <td class="p-2.5">${item[1]}</td>
+                <td class="p-2.5 text-right text-emerald-400">
+                    Rp ${Number(item[2]).toLocaleString("id-ID")}
+                </td>
+            </tr>
+            `;
+
+        });
+
+        document.getElementById("tabelTransaksi").innerHTML = html;
+
+    } catch (err) {
+
+        console.error(err);
+
+    }
+
+}
     </script>
 
 </body>
