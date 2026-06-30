@@ -331,11 +331,8 @@
                             <th class="p-2.5 text-right w-7/20">Nominal</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-900/60 text-gray-300">
-                        <tr class="hover:bg-gray-800/20"><td class="p-2.5 text-gray-500 truncate">21/06</td><td class="p-2.5 truncate">Makanan</td><td class="p-2.5 text-right text-rose-400 truncate">-50.000</td></tr>
-                        <tr class="hover:bg-gray-800/20"><td class="p-2.5 text-gray-500 truncate">20/06</td><td class="p-2.5 truncate">Gaji Bulanan</td><td class="p-2.5 text-right text-emerald-400">+15.000.000</td></tr>
-                        <tr class="hover:bg-gray-800/20"><td class="p-2.5 text-gray-500 truncate">19/06</td><td class="p-2.5 truncate">Invest Emas</td><td class="p-2.5 text-right text-yellow-500 truncate">-500.000</td></tr>
-                    </tbody>
+<tbody id="tabelTransaksi" class="divide-y divide-gray-900/60 text-gray-300">
+</tbody>
                 </table>
             </div>
 <!-- Form Input Transaksi -->
@@ -348,9 +345,10 @@
             <label class="block text-[10px] text-gray-500 mb-1">
                 Tanggal
             </label>
-            <input
-                type="date"
-                class="w-full bg-[#0f1115] border border-gray-700 rounded-lg px-2 py-2 text-[11px] text-gray-200 focus:outline-none focus:border-sky-500">
+<input
+id="tanggal"
+type="date"
+class="w-full bg-[#0f1115] border border-gray-700 rounded-lg px-2 py-2 text-[11px] text-gray-200 focus:outline-none focus:border-sky-500">
         </div>
 
         <!-- Kategori -->
@@ -358,10 +356,11 @@
             <label class="block text-[10px] text-gray-500 mb-1">
                 Kategori
             </label>
-            <input
-                type="text"
-                placeholder="Kategori"
-                class="w-full bg-[#0f1115] border border-gray-700 rounded-lg px-2 py-2 text-[11px] text-gray-200 placeholder-gray-600 focus:outline-none focus:border-sky-500">
+<input
+id="kategori"
+type="text"
+placeholder="Kategori"
+class="w-full bg-[#0f1115] border border-gray-700 rounded-lg px-2 py-2 text-[11px] text-gray-200 placeholder-gray-600 focus:outline-none focus:border-sky-500">
         </div>
 
         <!-- Nominal -->
@@ -369,18 +368,21 @@
             <label class="block text-[10px] text-gray-500 mb-1">
                 Nominal
             </label>
-            <input
-                type="number"
-                placeholder="0"
-                class="w-full bg-[#0f1115] border border-gray-700 rounded-lg px-2 py-2 text-[11px] text-right text-gray-200 placeholder-gray-600 focus:outline-none focus:border-sky-500">
+<input
+id="nominal"
+type="number"
+placeholder="0"
+class="w-full bg-[#0f1115] border border-gray-700 rounded-lg px-2 py-2 text-[11px] text-right text-gray-200 placeholder-gray-600 focus:outline-none focus:border-sky-500">
         </div>
 
     </div>
 
-    <button
-        class="w-full bg-sky-500 hover:bg-sky-600 transition rounded-xl py-2 text-[12px] font-semibold text-white">
-        <i class="fa-solid fa-plus mr-2"></i>
-        Tambah Transaksi
+<button
+    id="btnTambah"
+    class="w-full bg-sky-500 hover:bg-sky-600 transition rounded-xl py-2 text-[12px] font-semibold text-white">
+    <i class="fa-solid fa-plus mr-2"></i>
+    Tambah Transaksi
+</button>
     </button>
 
 </div>
@@ -674,6 +676,13 @@ goToChart(0);
     }
 
 }
+        document
+    .getElementById("btnTambah")
+    .addEventListener("click", tambahTransaksi);
+
+window.onload = function () {
+    loadTransaksi();
+};
     </script>
 
 </body>
