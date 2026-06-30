@@ -654,13 +654,15 @@ async function tambahTransaksi() {
     }
 
 }
-        document
-    .getElementById("btnTambah")
-    .addEventListener("click", tambahTransaksi);
+document.addEventListener("DOMContentLoaded", function () {
 
-window.onload = function () {
     loadTransaksi();
-};
+
+    document
+        .getElementById("btnTambah")
+        .addEventListener("click", tambahTransaksi);
+
+});
     </script>
 
 </body>
